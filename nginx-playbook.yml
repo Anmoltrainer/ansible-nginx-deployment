@@ -1,16 +1,15 @@
 ---
-- name: Install Nginx
+- name: Webserver setup
   hosts: webserver
   become: yes
   tasks:
-    - name: Install Nginx
-      apt:
-        name: nginx
+    - name: Install httpd
+      ansible.builtin.yum: 
+        name: httpd
         state: present
-        update_cache: yes
 
-    - name: Start Nginx
-      service:
-        name: nginx
+    - name: Start service
+      ansible.builtin.service:
+        name: httpd
         state: started
-        enabled: yes
+        enabled: yes 
