@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/yourusername/ansible-nginx-deployment.git'
+                git 'https://github.com/Anmoltrainer/ansible-nginx-deployment.git'
             }
         }
         stage('Install Nginx') {
