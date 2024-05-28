@@ -1,15 +1,18 @@
----
 - name: Webserver setup
   hosts: webserver
   become: yes
   tasks:
-    - name: Install httpd
-      ansible.builtin.yum: 
-        name: httpd
+    - name: Update apt cache
+      ansible.builtin.apt:
+        update_cache: yes
+
+    - name: Install apache2
+      ansible.builtin.apt: 
+        name: apache2
         state: present
 
-    - name: Start service
+    - name: Start apache2 service
       ansible.builtin.service:
-        name: httpd
+        name: apache2
         state: started
-        enabled: yes 
+        enabled: yes
